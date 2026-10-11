@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicule")
@@ -46,8 +45,8 @@ public class Vehicule {
     private Agence agence;
 
     @ManyToMany
-    private List<Equipement> equipements = new ArrayList<>();
+    private Set<Equipement> equipements;
 
     @OneToMany(mappedBy = "vehicule")
-    private List<Reservation> reservations = new ArrayList<>();
+    private Set<Reservation> reservations;
 }

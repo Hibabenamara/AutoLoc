@@ -3,8 +3,7 @@ package tn.esprit.autoloc.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "agence")
@@ -31,8 +30,8 @@ public class Agence {
     private String telephone;
 
     @OneToMany(mappedBy = "agence")
-    private List<Vehicule> vehicules = new ArrayList<>();
+    private Set<Vehicule> vehicules;
 
     @OneToMany(mappedBy = "agence")
-    private List<Employe> employes = new ArrayList<>();
+    private Set<Employe> employes;
 }

@@ -8,8 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Set;
 
 @Entity
 @Table(name = "contrat")
@@ -35,6 +34,6 @@ public class Contrat {
     @OneToOne
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL)
-    private List<Paiement> paiements = new ArrayList<>();
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST)
+    private Set<Paiement> paiements;
 }
