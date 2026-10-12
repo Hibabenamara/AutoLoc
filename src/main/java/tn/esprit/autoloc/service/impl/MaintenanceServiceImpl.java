@@ -1,4 +1,42 @@
 package tn.esprit.autoloc.service.impl;
 
-public class MaintenanceServiceImpl {
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+import tn.esprit.autoloc.domain.Maintenance;
+import tn.esprit.autoloc.repository.MaintenanceRepository;
+import tn.esprit.autoloc.service.interfaces.IMaintenanceService;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Service
+@AllArgsConstructor
+public class MaintenanceServiceImpl implements IMaintenanceService {
+
+    private final MaintenanceRepository maintenanceRepository;
+
+    @Override
+    public Maintenance addMaintenance(Maintenance maintenance) {
+        return maintenanceRepository.save(maintenance);
+    }
+
+    @Override
+    public Set<Maintenance> retrieveAllMaintenances() {
+        return new HashSet<>(maintenanceRepository.findAll());
+    }
+
+    @Override
+    public Maintenance retrieveMaintenance(Long idMaintenance) {
+        return maintenanceRepository.findById(idMaintenance).get();
+    }
+
+    @Override
+    public Maintenance modifyMaintenance(Maintenance maintenance) {
+        return maintenanceRepository.save(maintenance);
+    }
+
+    @Override
+    public void removeMaintenance(Long idMaintenance) {
+        maintenanceRepository.deleteById(idMaintenance);
+    }
 }
