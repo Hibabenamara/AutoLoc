@@ -6,6 +6,7 @@ import tn.esprit.autoloc.domain.Maintenance;
 import tn.esprit.autoloc.repository.MaintenanceRepository;
 import tn.esprit.autoloc.service.interfaces.IMaintenanceService;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,5 +39,10 @@ public class MaintenanceServiceImpl implements IMaintenanceService {
     @Override
     public void removeMaintenance(Long idMaintenance) {
         maintenanceRepository.deleteById(idMaintenance);
+    }
+
+    @Override
+    public Set<Maintenance> getByDateFinBetween(LocalDate debut, LocalDate fin) {
+        return maintenanceRepository.findByDateFinBetween(debut, fin);
     }
 }

@@ -1,10 +1,12 @@
 package tn.esprit.autoloc.web.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.domain.Reservation;
 import tn.esprit.autoloc.service.interfaces.IReservationService;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @RestController
@@ -42,5 +44,14 @@ public class ReservationRestController {
     @PutMapping("/modify-reservation")
     public Reservation modifyReservation(@RequestBody Reservation r) {
         return reservationService.modifyReservation(r);
+    }
+
+    @GetMapping("/debut-apres")
+    public Set<Reservation> debutApres(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return reservationService.getByDateDebutAfter(date);
+    }
+    @GetMapping("/fin-avant")
+    public Set<Reservation> finAvant(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+        return reservationService.getByDateFinBefore(date);
     }
 }

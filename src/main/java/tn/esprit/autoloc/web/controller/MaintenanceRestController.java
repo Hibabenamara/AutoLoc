@@ -1,10 +1,12 @@
 package tn.esprit.autoloc.web.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.autoloc.domain.Maintenance;
 import tn.esprit.autoloc.service.interfaces.IMaintenanceService;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @RestController
@@ -42,5 +44,11 @@ public class MaintenanceRestController {
     @PutMapping("/modify-maintenance")
     public Maintenance modifyMaintenance(@RequestBody Maintenance m) {
         return maintenanceService.modifyMaintenance(m);
+    }
+
+    @GetMapping("/fin-entre")
+    public Set<Maintenance> finEntre(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate debut,
+                                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fin) {
+        return maintenanceService.getByDateFinBetween(debut, fin);
     }
 }

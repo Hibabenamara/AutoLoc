@@ -43,4 +43,16 @@ public class EmployeRestController {
     public Employe modifyEmploye(@RequestBody Employe e) {
         return employeService.modifyEmploye(e);
     }
+    // http://localhost:8089/employe/desaffecter-employe/1
+    @PutMapping("/desaffecter-employe/{employe-id}")
+    public Employe desaffecterEmploye(@PathVariable("employe-id") Long employeId) {
+        return employeService.desaffecterEmploye(employeId);
+    }
+
+    // http://localhost:8089/employe/affecter-employe/1/2
+    @PutMapping("/affecter-employe/{employe-id}/{agence-id}")
+    public Employe affecterEmploye(@PathVariable("employe-id") Long employeId,
+                                   @PathVariable("agence-id") Long agenceId) {
+        return employeService.affecterEmploye(employeId, agenceId);
+    }
 }

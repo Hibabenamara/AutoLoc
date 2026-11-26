@@ -6,6 +6,7 @@ import tn.esprit.autoloc.domain.Reservation;
 import tn.esprit.autoloc.repository.ReservationRepository;
 import tn.esprit.autoloc.service.interfaces.IReservationService;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -38,5 +39,15 @@ public class ReservationServiceImpl implements IReservationService {
     @Override
     public void removeReservation(Long idReservation) {
         reservationRepository.deleteById(idReservation);
+    }
+
+    @Override
+    public Set<Reservation> getByDateDebutAfter(LocalDate date) {
+        return reservationRepository.findByDateDebutAfter(date);
+    }
+
+    @Override
+    public Set<Reservation> getByDateFinBefore(LocalDate date) {
+        return reservationRepository.findByDateFinBefore(date);
     }
 }

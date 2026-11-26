@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -47,6 +48,7 @@ public class Vehicule {
     @ManyToMany
     private Set<Equipement> equipements;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "vehicule")
     private Set<Reservation> reservations;
 }

@@ -10,4 +10,6 @@ public interface IAgenceService {
     Agence retrieveAgence(Long idAgence);
     Agence modifyAgence(Agence agence);
     void removeAgence(Long idAgence);
+    Set<Agence> getByVille(String ville);
+    Set<Agence> getByNomEndingWith(String fin);
 }

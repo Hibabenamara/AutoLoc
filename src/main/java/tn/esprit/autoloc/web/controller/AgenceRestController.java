@@ -43,4 +43,9 @@ public class AgenceRestController {
     public Agence modifyAgence(@RequestBody Agence a) {
         return agenceService.modifyAgence(a);
     }
+
+    @GetMapping("/by-ville")
+    public Set<Agence> byVille(@RequestParam String ville) { return agenceService.getByVille(ville); }
+    @GetMapping("/nom-finit")
+    public Set<Agence> nomFinit(@RequestParam String fin) { return agenceService.getByNomEndingWith(fin); }
 }

@@ -39,4 +39,11 @@ public class AgenceServiceImpl implements IAgenceService {
     public void removeAgence(Long idAgence) {
         agenceRepository.deleteById(idAgence);
     }
+
+    @Override public Set<Agence> getByVille(String v) {
+        return agenceRepository.findByVille(v);
+    }
+    @Override public Set<Agence> getByNomEndingWith(String f) {
+        return agenceRepository.findByNomEndingWith(f);
+    }
 }
